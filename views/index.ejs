@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>Weather App</title>
+
+</head>
+
+<body>
+
+    <div class="main">
+        <% if(new Date().getHours().toString()>= '18'){ %>
+            <div class="weather-app" style="background-image: URL('/images/night.jpg');">
+                <% } else { %>
+                    <div class="weather-app" style="background-image: URL('/images/day.jpg');">
+                        <% } %>
+
+                            <header>
+                                <div class="search">
+                                    <form action="/search" id="locationinput" method="POST">
+
+                                        <input type="text" id="search" class="search_input" name="city"
+                                            placeholder="Search Location...">
+
+
+                                        <button type="submit" class="submit">
+                                        </button>
+                                    </form>
+                                </div>
+                                x
+                                <div class="header_details">
+
+                                    <h1 class="country_name">
+                                        <%= data.name %>, <%= data.sys.country %>
+                                    </h1>
+
+                                    <h3 class="date_">
+                                        <%= new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric",
+                                            month:"short", day:"numeric"}) %>
+                                    </h3>
+
+                                    <h3 class="time_">
+                                        <%= new Date().getHours() %> : <%= new Date().getMinutes() %>
+                                    </h3>
+
+                                    <div class="weather">
+                                        <% if(new Date().getHours().toString()>= '18'){ %>
+                                            <img src="/images/<%= data.weather[0].main%>Night.png" alt="" id="icon"
+                                                class="icon" width="80" height="80">
+                                            <% } else { %>
+                                                <img src="/images/<%= data.weather[0].main%>Day.png" alt="" id="icon"
+                                                    class="icon" width="80" height="80">
+                                                <% } %>
+                                                    <br><span class="condition">
+                                                        <%= data.weather[0].main%>
+                                                    </span>
+                                    </div>
+
+                                </div>
+
+                                <div class="Temperature">
+                                    <span>
+                                        <h2>
+                                            <%= data.main.temp %>&#176;C
+                                        </h2>
+                                    </span>
+                                </div>
+
+                            </header>
+
+                            <footer>
+
+                                <div class="footer_details">
+                                    <div class="temp">
+                                        <span>Temperature</span><br><br>
+                                        <span>
+                                            <%= data.main.temp %>&#176;C
+                                        </span>
+
+                                    </div>
+
+                                    <div class="feels_like">
+                                        <span>Feels Like</span><br><br>
+                                        <span>
+                                            <%= data.main.feels_like %>&#176;C
+                                        </span>
+
+                                    </div>
+
+                                    <div class="temp_min">
+                                        <span>Min Temerature</span><br><br>
+                                        <span>
+                                            <%= data.main.temp_min %>&#176;C
+                                        </span>
+
+                                    </div>
+
+                                    <div class="temp_max">
+                                        <span>Max Temperature</span><br><br>
+                                        <span>
+                                            <%= data.main.temp_max %>&#176;C
+                                        </span>
+
+                                    </div>
+
+                                    <div class="pressure">
+                                        <span>Pressure</span><br><br>
+                                        <span>
+                                            <%= data.main.pressure %> m/s
+                                        </span>
+
+                                    </div>
+                                    <div class="visibility">
+                                        <span>Visibility</span><br><br>
+                                        <span>
+                                            <%= data.visibility %> m
+                                        </span>
+
+                                    </div>
+                                    <div class="humidity">
+                                        <span>Humidity</span><br><br>
+                                        <span>
+                                            <%= data.main.humidity %>%
+                                        </span>
+
+                                    </div>
+                                </div>
+
+                            </footer>
+
+                    </div>
+
+
+
+
+</body>
+
+</html>
