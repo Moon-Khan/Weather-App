@@ -4,7 +4,7 @@
 
 ### Install Packages
 #### npm install express
-#### npm install bodyparser
+#### npm install body-parser
 #### npm install xhr2
 
 ### To Run
