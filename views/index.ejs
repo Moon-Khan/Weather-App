@@ -16,11 +16,13 @@
 <body>
 
     <div class="main">
+
         <% if(new Date().getHours().toString()>= '18'){ %>
-            <div class="weather-app" style="background-image: URL('/images/night.jpg');">
+            <div class="weather-app" style="background-image: URL('../images/night.jpg');">
                 <% } else { %>
-                    <div class="weather-app" style="background-image: URL('/images/day.jpg');">
+                    <div class="weather-app" style="background-image: URL('../images/day.jpg');">
                         <% } %>
+
 
                             <header>
                                 <div class="search">
@@ -34,7 +36,7 @@
                                         </button>
                                     </form>
                                 </div>
-                                x
+
                                 <div class="header_details">
 
                                     <h1 class="country_name">
@@ -45,7 +47,6 @@
                                         <%= new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric",
                                             month:"short", day:"numeric"}) %>
                                     </h3>
-
                                     <h3 class="time_">
                                         <%= new Date().getHours() %> : <%= new Date().getMinutes() %>
                                     </h3>
